@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -7,6 +8,7 @@
 <title>Jet Stream Autographs</title>
 
 <style>
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -19,7 +21,9 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* NAVBAR */
+/* =========================
+   NAVBAR
+========================= */
 
 .navbar {
     width: 100%;
@@ -27,7 +31,6 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     background: #080808;
     border-bottom: 1px solid #222;
 }
@@ -53,7 +56,10 @@ body {
     color: #d6ae61;
 }
 
-/* HERO */
+
+/* =========================
+   HERO
+========================= */
 
 .hero {
     min-height: 650px;
@@ -116,7 +122,357 @@ body {
     font-weight: bold;
 }
 
-/* COLLECTION */
+
+/* =========================
+   TRAIN BANNER
+========================= */
+
+.train-banner {
+    width: 100%;
+    height: 190px;
+
+    position: relative;
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #050505,
+            #111
+        );
+
+    border-top: 1px solid #292929;
+    border-bottom: 1px solid #292929;
+}
+
+
+/* TRAIN */
+
+.train {
+    position: absolute;
+
+    left: -900px;
+    top: 35px;
+
+    height: 120px;
+
+    display: flex;
+    align-items: center;
+
+    animation: trainMove 13s linear infinite;
+
+    white-space: nowrap;
+}
+
+@keyframes trainMove {
+
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(100vw + 1800px));
+    }
+
+}
+
+
+/* =========================
+   ENGINE
+========================= */
+
+.engine {
+    position: relative;
+
+    width: 230px;
+    height: 100px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #333,
+            #151515
+        );
+
+    border: 2px solid #555;
+
+    border-radius: 8px 25px 5px 5px;
+
+    box-shadow:
+        0 12px 25px rgba(0,0,0,.7);
+
+    flex-shrink: 0;
+}
+
+
+/* ENGINE BODY */
+
+.engine-body {
+    position: absolute;
+
+    right: 15px;
+    top: 20px;
+
+    width: 75px;
+    height: 45px;
+
+    background: #080808;
+
+    border: 2px solid #666;
+
+    border-radius: 5px;
+}
+
+
+/* WINDOW */
+
+.engine-window {
+    position: absolute;
+
+    width: 25px;
+    height: 20px;
+
+    left: 10px;
+    top: 10px;
+
+    background: #222;
+
+    border: 2px solid #d6ae61;
+}
+
+
+/* HEADLIGHT */
+
+.engine-light {
+    position: absolute;
+
+    right: -15px;
+    top: 12px;
+
+    width: 12px;
+    height: 12px;
+
+    border-radius: 50%;
+
+    background: #d6ae61;
+
+    box-shadow:
+        0 0 15px #d6ae61;
+}
+
+
+/* CHIMNEY */
+
+.chimney {
+    position: absolute;
+
+    left: 45px;
+    top: -35px;
+
+    width: 32px;
+    height: 38px;
+
+    background: #202020;
+
+    border: 2px solid #555;
+
+    border-radius: 8px 8px 2px 2px;
+}
+
+
+/* =========================
+   WHEELS
+========================= */
+
+.wheel {
+    position: absolute;
+
+    bottom: -25px;
+
+    width: 48px;
+    height: 48px;
+
+    border-radius: 50%;
+
+    background: #080808;
+
+    border: 6px solid #555;
+
+    box-shadow:
+        inset 0 0 0 5px #111;
+
+    animation: wheelSpin .7s linear infinite;
+}
+
+.wheel1 {
+    left: 25px;
+}
+
+.wheel2 {
+    left: 90px;
+}
+
+.wheel3 {
+    left: 155px;
+}
+
+@keyframes wheelSpin {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/* =========================
+   BANNER
+========================= */
+
+.banner {
+    position: relative;
+
+    margin-left: 20px;
+
+    width: 650px;
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #d6ae61,
+            #a77f35
+        );
+
+    border: 4px solid #211b10;
+
+    box-shadow:
+        0 10px 20px rgba(0,0,0,.6);
+
+    transform: skewX(-3deg);
+}
+
+.banner span {
+
+    font-family:
+        Impact,
+        Arial Black,
+        sans-serif;
+
+    font-size: 46px;
+
+    letter-spacing: 4px;
+
+    color: #111;
+
+    text-shadow:
+        2px 2px 0 rgba(255,255,255,.25);
+}
+
+
+/* =========================
+   SMOKE
+========================= */
+
+.smoke {
+    position: absolute;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(210,210,210,.55),
+            rgba(100,100,100,.2),
+            transparent 70%
+        );
+
+    filter: blur(3px);
+
+    opacity: 0;
+
+    animation:
+        smokeRise 3s ease-out infinite;
+}
+
+.smoke1 {
+    left: 38px;
+    top: -65px;
+
+    width: 45px;
+    height: 45px;
+
+    animation-delay: 0s;
+}
+
+.smoke2 {
+    left: 15px;
+    top: -75px;
+
+    width: 65px;
+    height: 65px;
+
+    animation-delay: .7s;
+}
+
+.smoke3 {
+    left: 65px;
+    top: -100px;
+
+    width: 55px;
+    height: 55px;
+
+    animation-delay: 1.4s;
+}
+
+.smoke4 {
+    left: 5px;
+    top: -115px;
+
+    width: 75px;
+    height: 75px;
+
+    animation-delay: 2s;
+}
+
+@keyframes smokeRise {
+
+    0% {
+        opacity: 0;
+        transform:
+            translate(0, 20px)
+            scale(.5);
+    }
+
+    20% {
+        opacity: .7;
+    }
+
+    60% {
+        opacity: .45;
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            translate(-35px, -90px)
+            scale(1.7);
+    }
+
+}
+
+
+/* =========================
+   COLLECTION
+========================= */
 
 .collection {
     padding: 100px 7%;
@@ -137,7 +493,10 @@ body {
     margin-top: 10px;
 }
 
-/* PRODUCTS */
+
+/* =========================
+   PRODUCTS
+========================= */
 
 .products {
     display: grid;
@@ -159,6 +518,7 @@ body {
     transform: translateY(-8px);
     border-color: #806738;
 }
+
 
 /* PRODUCT IMAGE */
 
@@ -188,6 +548,7 @@ body {
         );
 }
 
+
 /* BUILT-IN AUTOGRAPH */
 
 .fake-photo {
@@ -211,6 +572,7 @@ body {
 
 .fake-photo::before {
     content: "FREDDY";
+
     position: absolute;
 
     top: 45%;
@@ -219,6 +581,7 @@ body {
     color: #333;
 
     font-family: Georgia, serif;
+
     font-size: 34px;
 
     transform: rotate(-10deg);
@@ -262,7 +625,10 @@ body {
     letter-spacing: 2px;
 }
 
-/* PRODUCT INFO */
+
+/* =========================
+   PRODUCT INFO
+========================= */
 
 .product-info {
     padding: 25px;
@@ -319,7 +685,10 @@ body {
     padding-bottom: 5px;
 }
 
-/* TRUST */
+
+/* =========================
+   TRUST
+========================= */
 
 .trust {
     background: #0d0d0d;
@@ -366,7 +735,10 @@ body {
     line-height: 1.7;
 }
 
-/* GUARANTEE */
+
+/* =========================
+   GUARANTEE
+========================= */
 
 .guarantee {
     padding: 120px 7%;
@@ -403,7 +775,10 @@ body {
     line-height: 1.7;
 }
 
-/* FOOTER */
+
+/* =========================
+   FOOTER
+========================= */
 
 footer {
     padding: 40px 7%;
@@ -419,7 +794,10 @@ footer {
     font-size: 12px;
 }
 
-/* MOBILE */
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:700px) {
 
@@ -450,291 +828,383 @@ footer {
     footer div + div {
         margin-top: 10px;
     }
-}
-</style>
-</head>
 
+    .train-banner {
+        height: 160px;
+    }
+
+    .train {
+        top: 35px;
+    }
+
+    .banner {
+        width: 500px;
+        height: 65px;
+    }
+
+    .banner span {
+        font-size: 32px;
+        letter-spacing: 2px;
+    }
+
+}
+
+</style>
+
+</head>
 
 <body>
 
-<!-- NAVIGATION -->
+<!-- =========================
+     NAVIGATION
+========================= -->
 
 <div class="navbar">
 
-    <div class="logo">
-        JET STREAM <span>AUTOGRAPHS</span>
+```
+<div class="logo">
+    JET STREAM <span>AUTOGRAPHS</span>
+</div>
+
+<div>
+    <a href="#collection">Collection</a>
+    <a href="#authenticity">Authenticity</a>
+    <a href="#guarantee">Guarantee</a>
+</div>
+```
+
+</div>
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+```
+<div class="hero-text">
+
+    <div class="small-title">
+        Authentic Memorabilia
     </div>
 
-    <div>
-        <a href="#collection">Collection</a>
-        <a href="#authenticity">Authenticity</a>
-        <a href="#guarantee">Guarantee</a>
+    <h1>
+        Own a piece of
+        <span>history.</span>
+    </h1>
+
+    <p>
+        Discover authentic autographs and rare memorabilia
+        from legendary athletes, entertainers and icons.
+    </p>
+
+    <a href="#collection" class="button">
+        Shop the Collection
+    </a>
+
+</div>
+```
+
+</section>
+
+<!-- =========================
+     TRAIN BANNER
+========================= -->
+
+<div class="train-banner">
+
+```
+<div class="train">
+
+    <!-- SMOKE -->
+
+    <div class="smoke smoke1"></div>
+    <div class="smoke smoke2"></div>
+    <div class="smoke smoke3"></div>
+    <div class="smoke smoke4"></div>
+
+
+    <!-- ENGINE -->
+
+    <div class="engine">
+
+        <div class="chimney"></div>
+
+        <div class="engine-body">
+
+            <div class="engine-window"></div>
+
+            <div class="engine-light"></div>
+
+        </div>
+
+
+        <div class="wheel wheel1"></div>
+        <div class="wheel wheel2"></div>
+        <div class="wheel wheel3"></div>
+
     </div>
+
+
+    <!-- BANNER -->
+
+    <div class="banner">
+
+        <span>
+            VALVOLINE SCAMS!
+        </span>
+
+    </div>
+
+</div>
+```
+
+</div>
+
+<!-- =========================
+     COLLECTION
+========================= -->
+
+<section class="collection" id="collection">
+
+```
+<div class="collection-title">
+
+    <div class="small-title">
+        Featured Collection
+    </div>
+
+    <h2>
+        Recently signed
+    </h2>
+
+    <p>
+        Rare signatures. Real stories.
+    </p>
 
 </div>
 
 
-<!-- HERO -->
+<div class="products">
 
-<section class="hero">
 
-    <div class="hero-text">
+    <!-- PRODUCT 1 -->
 
-        <div class="small-title">
-            Authentic Memorabilia
+    <div class="product">
+
+        <div class="product-image">
+
+            <div class="fake-photo">
+
+                <div class="signature">
+                    Robert Englund
+                </div>
+
+            </div>
+
+            <div class="photo-label">
+                AUTHENTICATED
+            </div>
+
         </div>
 
-        <h1>
-            Own a piece of
-            <span>history.</span>
-        </h1>
 
-        <p>
-            Discover authentic autographs and rare memorabilia
-            from legendary athletes, entertainers and icons.
-        </p>
+        <div class="product-info">
 
-        <a href="#collection" class="button">
-            Shop the Collection
-        </a>
+            <div class="category">
+                HORROR • SIGNED PHOTO
+            </div>
+
+            <h3>
+                Robert Englund
+            </h3>
+
+            <p>
+                Signed Freddy Krueger photograph
+                with Certificate of Authenticity.
+            </p>
+
+
+            <div class="product-bottom">
+
+                <div class="price">
+                    $129.99
+                </div>
+
+                <a href="#" class="buy">
+                    View item →
+                </a>
+
+            </div>
+
+        </div>
 
     </div>
+
+
+    <!-- PRODUCT 2 -->
+
+    <div class="product">
+
+        <div class="product-image two">
+
+            <div class="fake-photo">
+
+                <div class="signature red-signature">
+                    Robert Englund
+                </div>
+
+            </div>
+
+            <div class="photo-label">
+                AUTHENTICATED
+            </div>
+
+        </div>
+
+
+        <div class="product-info">
+
+            <div class="category">
+                HORROR • SIGNED PHOTO
+            </div>
+
+            <h3>
+                Robert Englund
+            </h3>
+
+            <p>
+                Signed Freddy Krueger photograph
+                with Certificate of Authenticity.
+            </p>
+
+
+            <div class="product-bottom">
+
+                <div class="price">
+                    $129.99
+                </div>
+
+                <a href="#" class="buy">
+                    View item →
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+```
 
 </section>
 
-
-<!-- COLLECTION -->
-
-<section class="collection" id="collection">
-
-    <div class="collection-title">
-
-        <div class="small-title">
-            Featured Collection
-        </div>
-
-        <h2>
-            Recently signed
-        </h2>
-
-        <p>
-            Rare signatures. Real stories.
-        </p>
-
-    </div>
-
-
-    <div class="products">
-
-
-        <!-- PRODUCT 1 -->
-
-        <div class="product">
-
-            <div class="product-image">
-
-                <div class="fake-photo">
-
-                    <div class="signature">
-                        Robert Englund
-                    </div>
-
-                </div>
-
-                <div class="photo-label">
-                    AUTHENTICATED
-                </div>
-
-            </div>
-
-
-            <div class="product-info">
-
-                <div class="category">
-                    HORROR • SIGNED PHOTO
-                </div>
-
-                <h3>
-                    Robert Englund
-                </h3>
-
-                <p>
-                    Signed Freddy Krueger photograph
-                    with Certificate of Authenticity.
-                </p>
-
-
-                <div class="product-bottom">
-
-                    <div class="price">
-                        $129.99
-                    </div>
-
-                    <a href="#" class="buy">
-                        View item →
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- PRODUCT 2 -->
-
-        <div class="product">
-
-            <div class="product-image two">
-
-                <div class="fake-photo">
-
-                    <div class="signature red-signature">
-                        Robert Englund
-                    </div>
-
-                </div>
-
-                <div class="photo-label">
-                    AUTHENTICATED
-                </div>
-
-            </div>
-
-
-            <div class="product-info">
-
-                <div class="category">
-                    HORROR • SIGNED PHOTO
-                </div>
-
-                <h3>
-                    Robert Englund
-                </h3>
-
-                <p>
-                    Signed Freddy Krueger photograph
-                    with Certificate of Authenticity.
-                </p>
-
-
-                <div class="product-bottom">
-
-                    <div class="price">
-                        $129.99
-                    </div>
-
-                    <a href="#" class="buy">
-                        View item →
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- AUTHENTICITY -->
+<!-- =========================
+     AUTHENTICITY
+========================= -->
 
 <section class="trust" id="authenticity">
 
-    <h2>
-        Buy with confidence.
-    </h2>
+```
+<h2>
+    Buy with confidence.
+</h2>
 
 
-    <div class="trust-grid">
+<div class="trust-grid">
 
-        <div class="trust-box">
+    <div class="trust-box">
 
-            <h3>
-                Authenticity
-            </h3>
+        <h3>
+            Authenticity
+        </h3>
 
-            <p>
-                Every autograph is carefully sourced
-                and accompanied by documentation
-                identifying the item and signing method.
-            </p>
-
-        </div>
-
-
-        <div class="trust-box">
-
-            <h3>
-                Certificate of Authenticity
-            </h3>
-
-            <p>
-                Collectibles come with professional
-                documentation for your records and
-                collection.
-            </p>
-
-        </div>
-
-
-        <div class="trust-box">
-
-            <h3>
-                Collector First
-            </h3>
-
-            <p>
-                We are dedicated to providing collectors
-                with memorable pieces and a professional
-                buying experience.
-            </p>
-
-        </div>
+        <p>
+            Every autograph is carefully sourced
+            and accompanied by documentation
+            identifying the item and signing method.
+        </p>
 
     </div>
 
+
+    <div class="trust-box">
+
+        <h3>
+            Certificate of Authenticity
+        </h3>
+
+        <p>
+            Collectibles come with professional
+            documentation for your records and
+            collection.
+        </p>
+
+    </div>
+
+
+    <div class="trust-box">
+
+        <h3>
+            Collector First
+        </h3>
+
+        <p>
+            We are dedicated to providing collectors
+            with memorable pieces and a professional
+            buying experience.
+        </p>
+
+    </div>
+
+</div>
+```
+
 </section>
 
-
-<!-- GUARANTEE -->
+<!-- =========================
+     GUARANTEE
+========================= -->
 
 <section class="guarantee" id="guarantee">
 
-    <div class="small-title">
-        Jet Stream Promise
-    </div>
+```
+<div class="small-title">
+    Jet Stream Promise
+</div>
 
-    <h2>
-        A one-year authenticity guarantee.
-    </h2>
+<h2>
+    A one-year authenticity guarantee.
+</h2>
 
-    <p>
-        If an autograph purchased from Jet Stream Autographs
-        is proven to be fake within one year, we stand behind
-        our guarantee.
-    </p>
+<p>
+    If an autograph purchased from Jet Stream Autographs
+    is proven to be fake within one year, we stand behind
+    our guarantee.
+</p>
+```
 
 </section>
 
-
-<!-- FOOTER -->
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
-    <div>
-        © 2026 Jet Stream Autographs
-    </div>
+```
+<div>
+    © 2026 Jet Stream Autographs
+</div>
 
-    <div>
-        Authenticity • Collectibles • Memorabilia
-    </div>
+<div>
+    Authenticity • Collectibles • Memorabilia
+</div>
+```
 
 </footer>
-
 
 </body>
 </html>
