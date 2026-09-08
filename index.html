@@ -1,154 +1,740 @@
-.collection {
-    padding: 120px 7%;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Jet Stream Autographs</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-.collection-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: end;
-    margin-bottom: 45px;
+body {
+    background: #080808;
+    color: white;
+    font-family: Arial, sans-serif;
 }
 
-.collection-header h2 {
-    font-family: "Playfair Display", serif;
-    font-size: clamp(40px, 5vw, 65px);
-    font-weight: 500;
-    letter-spacing: -2px;
-}
+/* NAVBAR */
 
-.view-all {
-    color: #aaa;
-    text-decoration: none;
-    font-size: 14px;
-    transition: .3s;
-}
-
-.view-all:hover {
-    color: #d8b36a;
-}
-
-.autograph-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 60px 35px;
-}
-
-.autograph {
-    position: relative;
-}
-
-.autograph-photo {
-    position: relative;
-    display: block;
-    overflow: hidden;
-    border-radius: 18px;
-    background: #111;
-    aspect-ratio: 4 / 5;
-}
-
-.autograph-photo img {
+.navbar {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-
-    transition:
-        transform .7s cubic-bezier(.2,.7,.2,1),
-        filter .5s ease;
-}
-
-.autograph:hover .autograph-photo img {
-    transform: scale(1.035);
-    filter: brightness(1.05);
-}
-
-.photo-label {
-    position: absolute;
-    top: 18px;
-    left: 18px;
-
-    padding: 8px 12px;
-
-    border-radius: 50px;
-
-    background: rgba(0,0,0,.65);
-    backdrop-filter: blur(10px);
-
-    color: #d8b36a;
-
-    font-size: 9px;
-    letter-spacing: 2px;
-    font-weight: 700;
-}
-
-.autograph-details {
-    padding: 20px 5px;
-}
-
-.category {
-    color: #a0a0a5;
-    font-size: 9px;
-    letter-spacing: 2px;
-}
-
-.autograph-details h3 {
-    margin-top: 8px;
-
-    font-family: "Playfair Display", serif;
-    font-size: 29px;
-    font-weight: 500;
-}
-
-.autograph-details p {
-    color: #858891;
-    font-size: 14px;
-    margin-top: 5px;
-}
-
-.product-bottom {
+    padding: 22px 7%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    margin-top: 20px;
+    background: #080808;
+    border-bottom: 1px solid #222;
 }
 
-.product-bottom strong {
-    font-size: 17px;
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 2px;
 }
 
-.view-button {
+.logo span {
+    color: #d6ae61;
+}
+
+.navbar a {
+    color: #ddd;
+    text-decoration: none;
+    margin-left: 30px;
+    font-size: 14px;
+}
+
+.navbar a:hover {
+    color: #d6ae61;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 650px;
+    padding: 120px 7%;
+
+    display: flex;
+    align-items: center;
+
+    background:
+        radial-gradient(
+            circle at 80% 40%,
+            rgba(214,174,97,.18),
+            transparent 35%
+        ),
+        #080808;
+}
+
+.hero-text {
+    max-width: 750px;
+}
+
+.small-title {
+    color: #d6ae61;
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(55px, 8vw, 100px);
+    line-height: .95;
+    font-weight: normal;
+}
+
+.hero h1 span {
+    color: #d6ae61;
+}
+
+.hero p {
+    color: #999;
+    font-size: 18px;
+    line-height: 1.7;
+    margin-top: 30px;
+    max-width: 600px;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 35px;
+
+    background: #d6ae61;
+    color: #111;
+
+    padding: 16px 28px;
+    border-radius: 50px;
+
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* COLLECTION */
+
+.collection {
+    padding: 100px 7%;
+}
+
+.collection-title {
+    margin-bottom: 50px;
+}
+
+.collection-title h2 {
+    font-family: Georgia, serif;
+    font-size: 55px;
+    font-weight: normal;
+}
+
+.collection-title p {
+    color: #888;
+    margin-top: 10px;
+}
+
+/* PRODUCTS */
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+.product {
+    background: #111;
+    border-radius: 25px;
+    overflow: hidden;
+
+    transition: .4s;
+
+    border: 1px solid #222;
+}
+
+.product:hover {
+    transform: translateY(-8px);
+    border-color: #806738;
+}
+
+/* PRODUCT IMAGE */
+
+.product-image {
+    height: 520px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    background:
+        radial-gradient(
+            circle,
+            #351414,
+            #120909 65%
+        );
+}
+
+.product-image.two {
+    background:
+        radial-gradient(
+            circle,
+            #141414,
+            #070707 70%
+        );
+}
+
+/* BUILT-IN AUTOGRAPH */
+
+.fake-photo {
+    width: 70%;
+    height: 80%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #eee,
+            #cfcfcf
+        );
+
+    position: relative;
+
+    transform: rotate(-3deg);
+
+    box-shadow:
+        0 30px 60px rgba(0,0,0,.5);
+}
+
+.fake-photo::before {
+    content: "FREDDY";
+    position: absolute;
+
+    top: 45%;
+    left: 18%;
+
+    color: #333;
+
+    font-family: Georgia, serif;
+    font-size: 34px;
+
+    transform: rotate(-10deg);
+}
+
+.signature {
+    position: absolute;
+
+    top: 25%;
+    left: 15%;
+
+    color: #222;
+
+    font-family: cursive;
+
+    font-size: 45px;
+
+    transform: rotate(-8deg);
+}
+
+.red-signature {
+    color: #b52b2b;
+}
+
+.photo-label {
+    position: absolute;
+
+    top: 20px;
+    left: 20px;
+
+    background: rgba(0,0,0,.8);
+
+    padding: 9px 14px;
+
+    border-radius: 50px;
+
+    color: #d6ae61;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+}
+
+/* PRODUCT INFO */
+
+.product-info {
+    padding: 25px;
+}
+
+.category {
+    color: #d6ae61;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+}
+
+.product-info h3 {
+    font-family: Georgia, serif;
+
+    font-size: 30px;
+
+    font-weight: normal;
+
+    margin-top: 8px;
+}
+
+.product-info p {
+    color: #888;
+
+    margin-top: 7px;
+
+    line-height: 1.5;
+}
+
+.product-bottom {
+    margin-top: 25px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.price {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.buy {
     color: white;
+
     text-decoration: none;
 
-    border-bottom: 1px solid #555;
+    border-bottom: 1px solid #777;
 
-    padding-bottom: 4px;
-
-    font-size: 13px;
-
-    transition: .3s;
+    padding-bottom: 5px;
 }
 
-.view-button:hover {
-    color: #d8b36a;
-    border-color: #d8b36a;
+/* TRUST */
+
+.trust {
+    background: #0d0d0d;
+
+    padding: 100px 7%;
 }
 
+.trust h2 {
+    font-family: Georgia, serif;
 
-@media (max-width: 700px) {
+    font-size: 50px;
 
-    .autograph-grid {
+    font-weight: normal;
+
+    margin-bottom: 50px;
+}
+
+.trust-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 50px;
+}
+
+.trust-box {
+    border-left: 2px solid #d6ae61;
+
+    padding-left: 20px;
+}
+
+.trust-box h3 {
+    font-family: Georgia, serif;
+
+    font-size: 25px;
+
+    margin-bottom: 12px;
+}
+
+.trust-box p {
+    color: #888;
+
+    line-height: 1.7;
+}
+
+/* GUARANTEE */
+
+.guarantee {
+    padding: 120px 7%;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(214,174,97,.12),
+            transparent 45%
+        );
+}
+
+.guarantee h2 {
+    font-family: Georgia, serif;
+
+    font-size: clamp(40px,6vw,70px);
+
+    font-weight: normal;
+
+    max-width: 900px;
+
+    margin: auto;
+}
+
+.guarantee p {
+    color: #888;
+
+    max-width: 650px;
+
+    margin: 25px auto 0;
+
+    line-height: 1.7;
+}
+
+/* FOOTER */
+
+footer {
+    padding: 40px 7%;
+
+    border-top: 1px solid #222;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    color: #666;
+
+    font-size: 12px;
+}
+
+/* MOBILE */
+
+@media(max-width:700px) {
+
+    .navbar div:last-child {
+        display: none;
+    }
+
+    .hero {
+        padding: 90px 7%;
+    }
+
+    .products {
         grid-template-columns: 1fr;
     }
 
-    .collection-header {
+    .trust-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .collection-title h2 {
+        font-size: 42px;
+    }
+
+    footer {
         display: block;
     }
 
-    .view-all {
-        display: inline-block;
-        margin-top: 15px;
+    footer div + div {
+        margin-top: 10px;
     }
-
 }
+</style>
+</head>
+
+
+<body>
+
+<!-- NAVIGATION -->
+
+<div class="navbar">
+
+    <div class="logo">
+        JET STREAM <span>AUTOGRAPHS</span>
+    </div>
+
+    <div>
+        <a href="#collection">Collection</a>
+        <a href="#authenticity">Authenticity</a>
+        <a href="#guarantee">Guarantee</a>
+    </div>
+
+</div>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-text">
+
+        <div class="small-title">
+            Authentic Memorabilia
+        </div>
+
+        <h1>
+            Own a piece of
+            <span>history.</span>
+        </h1>
+
+        <p>
+            Discover authentic autographs and rare memorabilia
+            from legendary athletes, entertainers and icons.
+        </p>
+
+        <a href="#collection" class="button">
+            Shop the Collection
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- COLLECTION -->
+
+<section class="collection" id="collection">
+
+    <div class="collection-title">
+
+        <div class="small-title">
+            Featured Collection
+        </div>
+
+        <h2>
+            Recently signed
+        </h2>
+
+        <p>
+            Rare signatures. Real stories.
+        </p>
+
+    </div>
+
+
+    <div class="products">
+
+
+        <!-- PRODUCT 1 -->
+
+        <div class="product">
+
+            <div class="product-image">
+
+                <div class="fake-photo">
+
+                    <div class="signature">
+                        Robert Englund
+                    </div>
+
+                </div>
+
+                <div class="photo-label">
+                    AUTHENTICATED
+                </div>
+
+            </div>
+
+
+            <div class="product-info">
+
+                <div class="category">
+                    HORROR • SIGNED PHOTO
+                </div>
+
+                <h3>
+                    Robert Englund
+                </h3>
+
+                <p>
+                    Signed Freddy Krueger photograph
+                    with Certificate of Authenticity.
+                </p>
+
+
+                <div class="product-bottom">
+
+                    <div class="price">
+                        $129.99
+                    </div>
+
+                    <a href="#" class="buy">
+                        View item →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 2 -->
+
+        <div class="product">
+
+            <div class="product-image two">
+
+                <div class="fake-photo">
+
+                    <div class="signature red-signature">
+                        Robert Englund
+                    </div>
+
+                </div>
+
+                <div class="photo-label">
+                    AUTHENTICATED
+                </div>
+
+            </div>
+
+
+            <div class="product-info">
+
+                <div class="category">
+                    HORROR • SIGNED PHOTO
+                </div>
+
+                <h3>
+                    Robert Englund
+                </h3>
+
+                <p>
+                    Signed Freddy Krueger photograph
+                    with Certificate of Authenticity.
+                </p>
+
+
+                <div class="product-bottom">
+
+                    <div class="price">
+                        $129.99
+                    </div>
+
+                    <a href="#" class="buy">
+                        View item →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- AUTHENTICITY -->
+
+<section class="trust" id="authenticity">
+
+    <h2>
+        Buy with confidence.
+    </h2>
+
+
+    <div class="trust-grid">
+
+        <div class="trust-box">
+
+            <h3>
+                Authenticity
+            </h3>
+
+            <p>
+                Every autograph is carefully sourced
+                and accompanied by documentation
+                identifying the item and signing method.
+            </p>
+
+        </div>
+
+
+        <div class="trust-box">
+
+            <h3>
+                Certificate of Authenticity
+            </h3>
+
+            <p>
+                Collectibles come with professional
+                documentation for your records and
+                collection.
+            </p>
+
+        </div>
+
+
+        <div class="trust-box">
+
+            <h3>
+                Collector First
+            </h3>
+
+            <p>
+                We are dedicated to providing collectors
+                with memorable pieces and a professional
+                buying experience.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- GUARANTEE -->
+
+<section class="guarantee" id="guarantee">
+
+    <div class="small-title">
+        Jet Stream Promise
+    </div>
+
+    <h2>
+        A one-year authenticity guarantee.
+    </h2>
+
+    <p>
+        If an autograph purchased from Jet Stream Autographs
+        is proven to be fake within one year, we stand behind
+        our guarantee.
+    </p>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div>
+        © 2026 Jet Stream Autographs
+    </div>
+
+    <div>
+        Authenticity • Collectibles • Memorabilia
+    </div>
+
+</footer>
+
+
+</body>
+</html>
