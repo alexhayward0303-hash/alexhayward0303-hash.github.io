@@ -1,51 +1,154 @@
-const products = [
-
-{
-id: 1,
-name: "Celebrity Autograph",
-category: "Movies & TV",
-price: 75,
-image: "autograph1.jpg",
-description:
-"Authentic signed photograph. Detailed item information will be added here.",
-authenticity:
-"Authenticity/provenance information for this item."
-},
-
-{
-id: 2,
-name: "Sports Autograph",
-category: "Sports",
-price: 100,
-image: "autograph2.jpg",
-description:
-"Signed sports memorabilia for collectors.",
-authenticity:
-"Authenticity/provenance information for this item."
-},
-
-{
-id: 3,
-name: "TV Autograph",
-category: "Movies & TV",
-price: 85,
-image: "autograph3.jpg",
-description:
-"Autographed television memorabilia.",
-authenticity:
-"Authenticity/provenance information for this item."
-},
-
-{
-id: 4,
-name: "Music Autograph",
-category: "Music",
-price: 90,
-image: "autograph4.jpg",
-description:
-"Signed music memorabilia.",
-authenticity:
-"Authenticity/provenance information for this item."
+.collection {
+    padding: 120px 7%;
 }
 
-];
+.collection-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 45px;
+}
+
+.collection-header h2 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(40px, 5vw, 65px);
+    font-weight: 500;
+    letter-spacing: -2px;
+}
+
+.view-all {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 14px;
+    transition: .3s;
+}
+
+.view-all:hover {
+    color: #d8b36a;
+}
+
+.autograph-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 60px 35px;
+}
+
+.autograph {
+    position: relative;
+}
+
+.autograph-photo {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-radius: 18px;
+    background: #111;
+    aspect-ratio: 4 / 5;
+}
+
+.autograph-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+
+    transition:
+        transform .7s cubic-bezier(.2,.7,.2,1),
+        filter .5s ease;
+}
+
+.autograph:hover .autograph-photo img {
+    transform: scale(1.035);
+    filter: brightness(1.05);
+}
+
+.photo-label {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+
+    padding: 8px 12px;
+
+    border-radius: 50px;
+
+    background: rgba(0,0,0,.65);
+    backdrop-filter: blur(10px);
+
+    color: #d8b36a;
+
+    font-size: 9px;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+.autograph-details {
+    padding: 20px 5px;
+}
+
+.category {
+    color: #a0a0a5;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.autograph-details h3 {
+    margin-top: 8px;
+
+    font-family: "Playfair Display", serif;
+    font-size: 29px;
+    font-weight: 500;
+}
+
+.autograph-details p {
+    color: #858891;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.product-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 20px;
+}
+
+.product-bottom strong {
+    font-size: 17px;
+}
+
+.view-button {
+    color: white;
+    text-decoration: none;
+
+    border-bottom: 1px solid #555;
+
+    padding-bottom: 4px;
+
+    font-size: 13px;
+
+    transition: .3s;
+}
+
+.view-button:hover {
+    color: #d8b36a;
+    border-color: #d8b36a;
+}
+
+
+@media (max-width: 700px) {
+
+    .autograph-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .collection-header {
+        display: block;
+    }
+
+    .view-all {
+        display: inline-block;
+        margin-top: 15px;
+    }
+
+}
