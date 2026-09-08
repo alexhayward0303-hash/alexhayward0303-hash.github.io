@@ -33,15 +33,11 @@ body {
 .navbar {
     width: 100%;
     padding: 22px 7%;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     background: #080808;
-
     border-bottom: 1px solid #222;
-
     position: relative;
     z-index: 20;
 }
@@ -74,9 +70,7 @@ body {
 
 .hero {
     min-height: 650px;
-
     padding: 120px 7%;
-
     display: flex;
     align-items: center;
 
@@ -95,23 +89,16 @@ body {
 
 .small-title {
     color: #d6ae61;
-
     font-size: 12px;
-
     letter-spacing: 4px;
-
     text-transform: uppercase;
-
     margin-bottom: 25px;
 }
 
 .hero h1 {
     font-family: Georgia, serif;
-
     font-size: clamp(55px, 8vw, 100px);
-
     line-height: .95;
-
     font-weight: normal;
 }
 
@@ -121,46 +108,36 @@ body {
 
 .hero p {
     color: #999;
-
     font-size: 18px;
-
     line-height: 1.7;
-
     margin-top: 30px;
-
     max-width: 600px;
 }
 
 .button {
     display: inline-block;
-
     margin-top: 35px;
-
     background: #d6ae61;
-
     color: #111;
-
     padding: 16px 28px;
-
     border-radius: 50px;
-
     text-decoration: none;
-
     font-weight: bold;
 }
 
 
 /* =========================================================
-   SCROLL TRAIN SECTION
+   TRAIN SECTION
 
-   The height controls how long the train stays on screen.
+   The section is tall enough to give the animation room.
+   The train itself does NOT follow scroll position.
 ========================================================= */
 
 .train-scroll-section {
 
     position: relative;
 
-    height: 2200px;
+    height: 1800px;
 
     background:
         radial-gradient(
@@ -170,12 +147,13 @@ body {
         );
 
     border-top: 1px solid #222;
-
     border-bottom: 1px solid #222;
 }
 
 
-/* The viewport stays pinned while scrolling */
+/* =========================================================
+   PINNED TRAIN SCREEN
+========================================================= */
 
 .train-sticky {
 
@@ -204,7 +182,9 @@ body {
 }
 
 
-/* Ground */
+/* =========================
+   GROUND
+========================= */
 
 .train-ground {
 
@@ -226,9 +206,9 @@ body {
 }
 
 
-/* =========================================================
+/* =========================
    TRAIN
-========================================================= */
+========================= */
 
 .train {
 
@@ -237,8 +217,6 @@ body {
     left: 0;
 
     top: 50%;
-
-    transform: translateY(-50%);
 
     display: flex;
 
@@ -249,6 +227,16 @@ body {
     width: max-content;
 
     will-change: transform;
+
+    /*
+       IMPORTANT:
+       The train starts OFF SCREEN.
+       JavaScript moves it automatically.
+    */
+
+    transform:
+        translateX(110vw)
+        translateY(-50%);
 }
 
 
@@ -282,7 +270,9 @@ body {
 }
 
 
-/* TRAIN text */
+/* =========================
+   TRAIN LABEL
+========================= */
 
 .train-label {
 
@@ -292,7 +282,10 @@ body {
 
     top: 25px;
 
-    font-family: Impact, Arial Black, sans-serif;
+    font-family:
+        Impact,
+        Arial Black,
+        sans-serif;
 
     font-size: 30px;
 
@@ -302,7 +295,9 @@ body {
 }
 
 
-/* locomotive cab */
+/* =========================
+   CAB
+========================= */
 
 .cab {
 
@@ -321,10 +316,14 @@ body {
     border: 2px solid #777;
 
     border-radius: 5px;
+
+    overflow: visible;
 }
 
 
-/* window */
+/* =========================
+   WINDOW
+========================= */
 
 .cab-window {
 
@@ -344,7 +343,180 @@ body {
 }
 
 
-/* headlight */
+/* =========================================================
+   DRIVER
+========================================================= */
+
+/*
+   Simple cartoon driver sitting in the cab.
+*/
+
+.driver {
+
+    position: absolute;
+
+    right: 8px;
+
+    top: 5px;
+
+    width: 40px;
+
+    height: 60px;
+
+    z-index: 20;
+}
+
+
+/* head */
+
+.driver-head {
+
+    position: absolute;
+
+    left: 12px;
+
+    top: 2px;
+
+    width: 24px;
+
+    height: 24px;
+
+    border-radius: 50%;
+
+    background: #d09a70;
+
+    border: 2px solid #8c6248;
+}
+
+
+/* hair */
+
+.driver-head::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: -2px;
+
+    top: -5px;
+
+    width: 24px;
+
+    height: 10px;
+
+    background: #171717;
+
+    border-radius: 50% 50% 20% 20%;
+}
+
+
+/* body */
+
+.driver-body {
+
+    position: absolute;
+
+    left: 9px;
+
+    top: 25px;
+
+    width: 30px;
+
+    height: 35px;
+
+    background: #202020;
+
+    border: 2px solid #555;
+
+    border-radius: 8px 8px 2px 2px;
+}
+
+
+/* =========================================================
+   MIDDLE FINGER
+========================================================= */
+
+.middle-finger {
+
+    position: absolute;
+
+    right: -27px;
+
+    top: 19px;
+
+    width: 32px;
+
+    height: 10px;
+
+    background: #d09a70;
+
+    border: 2px solid #8c6248;
+
+    border-radius: 7px;
+
+    transform:
+        rotate(-8deg);
+
+    z-index: 30;
+}
+
+
+/*
+   Long middle finger
+*/
+
+.middle-finger::before {
+
+    content: "";
+
+    position: absolute;
+
+    right: 2px;
+
+    top: -15px;
+
+    width: 10px;
+
+    height: 27px;
+
+    background: #d09a70;
+
+    border: 2px solid #8c6248;
+
+    border-radius: 7px;
+
+}
+
+
+/*
+   Other curled fingers
+*/
+
+.middle-finger::after {
+
+    content: "";
+
+    position: absolute;
+
+    right: 3px;
+
+    bottom: -7px;
+
+    width: 17px;
+
+    height: 8px;
+
+    background: #d09a70;
+
+    border-radius: 6px;
+
+}
+
+
+/* =========================
+   HEADLIGHT
+========================= */
 
 .headlight {
 
@@ -363,11 +535,14 @@ body {
     background: #d6ae61;
 
     box-shadow:
-        0 0 25px #d6ae61;
+        0 0 25px #d6ae61,
+        0 0 60px rgba(214,174,97,.7);
 }
 
 
-/* chimney */
+/* =========================
+   CHIMNEY
+========================= */
 
 .chimney {
 
@@ -392,10 +567,10 @@ body {
     border: 3px solid #555;
 
     border-radius: 8px 8px 2px 2px;
+
+    z-index: 10;
 }
 
-
-/* chimney top */
 
 .chimney::before {
 
@@ -457,7 +632,8 @@ body {
 
     height: 13px;
 
-    transform: translate(-50%, -50%);
+    transform:
+        translate(-50%, -50%);
 
     border-radius: 50%;
 
@@ -523,8 +699,6 @@ body {
 }
 
 
-/* carriage roof */
-
 .carriage::before {
 
     content: "";
@@ -547,7 +721,9 @@ body {
 }
 
 
-/* letter */
+/* =========================
+   LETTER
+========================= */
 
 .carriage-letter {
 
@@ -576,7 +752,9 @@ body {
 }
 
 
-/* carriage wheels */
+/* =========================
+   CARRIAGE WHEELS
+========================= */
 
 .carriage-wheel {
 
@@ -608,7 +786,7 @@ body {
 
 
 /* =========================================================
-   SMOKE
+   HEAVY SMOKE
 ========================================================= */
 
 .smoke {
@@ -617,40 +795,163 @@ body {
 
     border-radius: 50%;
 
+    pointer-events: none;
+
     background:
         radial-gradient(
             circle,
-            rgba(220,220,220,.55),
-            rgba(130,130,130,.25),
-            transparent 70%
+            rgba(240,240,240,.7) 0%,
+            rgba(190,190,190,.55) 30%,
+            rgba(110,110,110,.25) 60%,
+            transparent 75%
         );
 
-    filter: blur(5px);
+    filter: blur(7px);
 
     opacity: 0;
 
-    pointer-events: none;
+    z-index: 5;
 }
 
+
+/* Large smoke clouds */
+
 .smoke1 {
-    left: 30px;
-    top: -105px;
-    width: 65px;
-    height: 65px;
+
+    left: 20px;
+
+    top: -100px;
+
+    width: 80px;
+
+    height: 80px;
 }
 
 .smoke2 {
-    left: 70px;
-    top: -160px;
-    width: 85px;
-    height: 85px;
+
+    left: 55px;
+
+    top: -175px;
+
+    width: 110px;
+
+    height: 110px;
 }
 
 .smoke3 {
-    left: 5px;
-    top: -210px;
-    width: 110px;
-    height: 110px;
+
+    left: -15px;
+
+    top: -255px;
+
+    width: 140px;
+
+    height: 140px;
+}
+
+.smoke4 {
+
+    left: 80px;
+
+    top: -330px;
+
+    width: 155px;
+
+    height: 155px;
+}
+
+.smoke5 {
+
+    left: -50px;
+
+    top: -410px;
+
+    width: 190px;
+
+    height: 190px;
+}
+
+.smoke6 {
+
+    left: 100px;
+
+    top: -500px;
+
+    width: 210px;
+
+    height: 210px;
+}
+
+
+/* =========================================================
+   ANIMATED SMOKE
+========================================================= */
+
+@keyframes smokeFloat {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translate(0, 20px)
+            scale(.5);
+    }
+
+    20% {
+
+        opacity: .85;
+    }
+
+    60% {
+
+        opacity: .65;
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translate(-120px, -100px)
+            scale(1.5);
+    }
+}
+
+
+/*
+   Different timing makes the smoke look like
+   many clouds instead of one giant blob.
+*/
+
+.train.smoking .smoke1 {
+    animation:
+        smokeFloat 2.2s infinite ease-out;
+}
+
+.train.smoking .smoke2 {
+    animation:
+        smokeFloat 2.8s infinite .25s ease-out;
+}
+
+.train.smoking .smoke3 {
+    animation:
+        smokeFloat 3.2s infinite .5s ease-out;
+}
+
+.train.smoking .smoke4 {
+    animation:
+        smokeFloat 3.7s infinite .8s ease-out;
+}
+
+.train.smoking .smoke5 {
+    animation:
+        smokeFloat 4.2s infinite 1s ease-out;
+}
+
+.train.smoking .smoke6 {
+    animation:
+        smokeFloat 4.8s infinite 1.3s ease-out;
 }
 
 
@@ -666,13 +967,17 @@ body {
 
     bottom: 8%;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
     text-align: center;
 
     width: 90%;
 
     pointer-events: none;
+
+    transition:
+        opacity .5s ease;
 }
 
 .train-message .small-title {
@@ -721,8 +1026,6 @@ body {
 }
 
 
-/* PRODUCTS */
-
 .products {
 
     display: grid;
@@ -753,8 +1056,6 @@ body {
     border-color: #806738;
 }
 
-
-/* PRODUCT IMAGE */
 
 .product-image {
 
@@ -787,8 +1088,6 @@ body {
 }
 
 
-/* FAKE PHOTO */
-
 .fake-photo {
 
     width: 70%;
@@ -804,7 +1103,8 @@ body {
 
     position: relative;
 
-    transform: rotate(-3deg);
+    transform:
+        rotate(-3deg);
 
     box-shadow:
         0 30px 60px rgba(0,0,0,.5);
@@ -826,7 +1126,8 @@ body {
 
     font-size: 34px;
 
-    transform: rotate(-10deg);
+    transform:
+        rotate(-10deg);
 }
 
 .signature {
@@ -843,7 +1144,8 @@ body {
 
     font-size: 45px;
 
-    transform: rotate(-8deg);
+    transform:
+        rotate(-8deg);
 }
 
 .red-signature {
@@ -858,7 +1160,8 @@ body {
 
     left: 20px;
 
-    background: rgba(0,0,0,.8);
+    background:
+        rgba(0,0,0,.8);
 
     padding: 9px 14px;
 
@@ -872,7 +1175,9 @@ body {
 }
 
 
-/* PRODUCT INFO */
+/* =========================
+   PRODUCT INFO
+========================= */
 
 .product-info {
     padding: 25px;
@@ -1091,11 +1396,8 @@ footer {
         margin-top: 10px;
     }
 
-
-    /* MOBILE TRAIN */
-
     .train-scroll-section {
-        height: 1900px;
+        height: 1700px;
     }
 
     .train-sticky {
@@ -1129,10 +1431,17 @@ footer {
         bottom: -27px;
     }
 
+    .driver {
+        transform: scale(.85);
+        transform-origin: right center;
+    }
+
 }
 
 
-/* ACCESSIBILITY */
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
 
 @media(prefers-reduced-motion: reduce) {
 
@@ -1213,7 +1522,7 @@ footer {
 
 
 <!-- =====================================================
-     SCROLL TRAIN
+     TRAIN
 ===================================================== -->
 
 <section
@@ -1229,7 +1538,9 @@ footer {
         <div class="train-ground"></div>
 
 
-        <!-- TRAIN -->
+        <!-- =================================================
+             TRAIN
+        ================================================= -->
 
         <div
             class="train"
@@ -1246,20 +1557,12 @@ footer {
 
                 <!-- SMOKE -->
 
-                <div
-                    class="smoke smoke1"
-                    id="smoke1"
-                ></div>
-
-                <div
-                    class="smoke smoke2"
-                    id="smoke2"
-                ></div>
-
-                <div
-                    class="smoke smoke3"
-                    id="smoke3"
-                ></div>
+                <div class="smoke smoke1"></div>
+                <div class="smoke smoke2"></div>
+                <div class="smoke smoke3"></div>
+                <div class="smoke smoke4"></div>
+                <div class="smoke smoke5"></div>
+                <div class="smoke smoke6"></div>
 
 
                 <!-- LABEL -->
@@ -1274,6 +1577,19 @@ footer {
                 <div class="cab">
 
                     <div class="cab-window"></div>
+
+
+                    <!-- DRIVER -->
+
+                    <div class="driver">
+
+                        <div class="driver-head"></div>
+
+                        <div class="driver-body"></div>
+
+                        <div class="middle-finger"></div>
+
+                    </div>
 
                 </div>
 
@@ -1290,18 +1606,11 @@ footer {
 
                 <!-- WHEELS -->
 
-                <div
-                    class="train-wheel loco-wheel1"
-                ></div>
+                <div class="train-wheel loco-wheel1"></div>
 
-                <div
-                    class="train-wheel loco-wheel2"
-                ></div>
+                <div class="train-wheel loco-wheel2"></div>
 
-                <div
-                    class="train-wheel loco-wheel3"
-                ></div>
-
+                <div class="train-wheel loco-wheel3"></div>
 
             </div>
 
@@ -1309,11 +1618,6 @@ footer {
             <!-- COUPLER -->
 
             <div class="coupler"></div>
-
-
-            <!-- =================================================
-                 CARRIAGES
-            ================================================= -->
 
 
             <!-- V -->
@@ -1328,7 +1632,6 @@ footer {
                 <div class="carriage-wheel right"></div>
 
             </div>
-
 
             <div class="coupler"></div>
 
@@ -1346,7 +1649,6 @@ footer {
 
             </div>
 
-
             <div class="coupler"></div>
 
 
@@ -1363,7 +1665,6 @@ footer {
 
             </div>
 
-
             <div class="coupler"></div>
 
 
@@ -1379,7 +1680,6 @@ footer {
                 <div class="carriage-wheel right"></div>
 
             </div>
-
 
             <div class="coupler"></div>
 
@@ -1397,7 +1697,6 @@ footer {
 
             </div>
 
-
             <div class="coupler"></div>
 
 
@@ -1413,7 +1712,6 @@ footer {
                 <div class="carriage-wheel right"></div>
 
             </div>
-
 
             <div class="coupler"></div>
 
@@ -1431,7 +1729,6 @@ footer {
 
             </div>
 
-
             <div class="coupler"></div>
 
 
@@ -1447,7 +1744,6 @@ footer {
                 <div class="carriage-wheel right"></div>
 
             </div>
-
 
             <div class="coupler"></div>
 
@@ -1465,7 +1761,6 @@ footer {
 
             </div>
 
-
             <div class="coupler"></div>
 
 
@@ -1481,7 +1776,6 @@ footer {
                 <div class="carriage-wheel right"></div>
 
             </div>
-
 
             <div class="coupler"></div>
 
@@ -1499,7 +1793,6 @@ footer {
 
             </div>
 
-
             <div class="coupler"></div>
 
 
@@ -1515,7 +1808,6 @@ footer {
                 <div class="carriage-wheel right"></div>
 
             </div>
-
 
             <div class="coupler"></div>
 
@@ -1533,7 +1825,6 @@ footer {
 
             </div>
 
-
             <div class="coupler"></div>
 
 
@@ -1549,7 +1840,6 @@ footer {
                 <div class="carriage-wheel right"></div>
 
             </div>
-
 
             <div class="coupler"></div>
 
@@ -1571,16 +1861,21 @@ footer {
         </div>
 
 
-        <!-- TRAIN MESSAGE -->
+        <!-- =================================================
+             MESSAGE
+        ================================================= -->
 
-        <div class="train-message">
+        <div
+            class="train-message"
+            id="trainMessage"
+        >
 
             <div class="small-title">
-                Keep scrolling
+                The train is coming
             </div>
 
             <p>
-                The train is still coming...
+                Jet Stream Autographs
             </p>
 
         </div>
@@ -1620,8 +1915,6 @@ footer {
     <div class="products">
 
 
-        <!-- PRODUCT 1 -->
-
         <div class="product">
 
             <div class="product-image">
@@ -1656,7 +1949,6 @@ footer {
                     with Certificate of Authenticity.
                 </p>
 
-
                 <div class="product-bottom">
 
                     <div class="price">
@@ -1676,8 +1968,6 @@ footer {
 
         </div>
 
-
-        <!-- PRODUCT 2 -->
 
         <div class="product">
 
@@ -1713,7 +2003,6 @@ footer {
                     with Certificate of Authenticity.
                 </p>
 
-
                 <div class="product-bottom">
 
                     <div class="price">
@@ -1733,7 +2022,6 @@ footer {
 
         </div>
 
-
     </div>
 
 </section>
@@ -1752,9 +2040,7 @@ footer {
         Buy with confidence.
     </h2>
 
-
     <div class="trust-grid">
-
 
         <div class="trust-box">
 
@@ -1799,7 +2085,6 @@ footer {
             </p>
 
         </div>
-
 
     </div>
 
@@ -1850,7 +2135,7 @@ footer {
 
 
 <!-- =====================================================
-     SCROLL TRAIN JAVASCRIPT
+     AUTOMATIC TRAIN ANIMATION
 ===================================================== -->
 
 <script>
@@ -1861,55 +2146,47 @@ const trainSection =
 const train =
     document.getElementById("train");
 
-const smoke1 =
-    document.getElementById("smoke1");
-
-const smoke2 =
-    document.getElementById("smoke2");
-
-const smoke3 =
-    document.getElementById("smoke3");
+const trainMessage =
+    document.getElementById("trainMessage");
 
 
-function moveTrain() {
+let animationStarted = false;
 
-    const rect =
-        trainSection.getBoundingClientRect();
 
-    const sectionHeight =
-        trainSection.offsetHeight;
+/*
+=========================================================
+START TRAIN
+=========================================================
 
-    const viewportHeight =
-        window.innerHeight;
+When the user scrolls into the train section:
+
+1. The section becomes pinned.
+2. The train starts automatically.
+3. The user does NOT control its movement.
+4. The train travels from right -> left.
+5. Heavy smoke plays continuously.
+6. Once finished, scrolling continues normally.
+=========================================================
+*/
+
+function startTrainAnimation() {
+
+    if (animationStarted) {
+        return;
+    }
+
+    animationStarted = true;
 
 
     /*
-       How far the user has travelled
-       through the train section.
+       Turn on all the smoke.
     */
 
-    let progress =
-        -rect.top /
-        (sectionHeight - viewportHeight);
+    train.classList.add("smoking");
 
 
     /*
-       Keep progress between 0 and 1.
-    */
-
-    progress =
-        Math.max(
-            0,
-            Math.min(
-                1,
-                progress
-            )
-        );
-
-
-    /*
-       Calculate the total width
-       of the train.
+       Calculate train width.
     */
 
     const trainWidth =
@@ -1917,114 +2194,214 @@ function moveTrain() {
 
 
     /*
-       Start completely off the
-       right/left depending on scroll.
+       Start completely outside
+       the right side of screen.
     */
 
-    const startPosition =
+    const start =
         window.innerWidth + 100;
 
 
-    const endPosition =
+    /*
+       Finish completely outside
+       the left side.
+    */
+
+    const end =
         -trainWidth - 100;
 
 
     /*
-       Move the train from
-       right -> left.
+       Total distance.
     */
 
-    const position =
-        startPosition +
-        (endPosition - startPosition) *
-        progress;
-
-
-    train.style.transform =
-        "translateX(" +
-        position +
-        "px) translateY(-50%)";
+    const distance =
+        end - start;
 
 
     /*
-       Smoke gets stronger while
-       the train is moving.
+       Animation duration.
+
+       Increase this number if you
+       want a slower train.
     */
 
-    const smokeOpacity =
-        Math.sin(progress * Math.PI) * .75;
+    const duration =
+        14000;
 
 
-    smoke1.style.opacity =
-        smokeOpacity;
-
-    smoke2.style.opacity =
-        smokeOpacity * .8;
-
-    smoke3.style.opacity =
-        smokeOpacity * .65;
+    let startTime = null;
 
 
-    /*
-       Make the smoke drift.
-    */
+    function animateTrain(timestamp) {
 
-    smoke1.style.transform =
-        "translate(" +
-        (-progress * 30) +
-        "px," +
-        (-progress * 20) +
-        "px) scale(" +
-        (1 + progress * .4) +
-        ")";
+        if (!startTime) {
+            startTime = timestamp;
+        }
 
-    smoke2.style.transform =
-        "translate(" +
-        (-progress * 60) +
-        "px," +
-        (-progress * 40) +
-        "px) scale(" +
-        (1 + progress * .5) +
-        ")";
 
-    smoke3.style.transform =
-        "translate(" +
-        (-progress * 90) +
-        "px," +
-        (-progress * 60) +
-        "px) scale(" +
-        (1 + progress * .6) +
-        ")";
+        const elapsed =
+            timestamp - startTime;
+
+
+        let progress =
+            elapsed / duration;
+
+
+        progress =
+            Math.min(1, progress);
+
+
+        /*
+           Smooth acceleration/deceleration.
+        */
+
+        const eased =
+            progress < .5
+
+                ? 2 * progress * progress
+
+                : 1 -
+                  Math.pow(
+                      -2 * progress + 2,
+                      2
+                  ) / 2;
+
+
+        const position =
+            start +
+            distance * eased;
+
+
+        train.style.transform =
+            "translateX(" +
+            position +
+            "px) translateY(-50%)";
+
+
+        /*
+           Hide message near the end.
+        */
+
+        if (progress > .85) {
+
+            trainMessage.style.opacity =
+                String(
+                    1 -
+                    ((progress - .85) / .15)
+                );
+
+        }
+
+
+        /*
+           Continue animation.
+        */
+
+        if (progress < 1) {
+
+            requestAnimationFrame(
+                animateTrain
+            );
+
+        } else {
+
+            /*
+               Animation is completely finished.
+            */
+
+            train.classList.remove(
+                "smoking"
+            );
+
+            trainMessage.style.opacity = "0";
+
+        }
+
+    }
+
+
+    requestAnimationFrame(
+        animateTrain
+    );
 
 }
 
 
-/*
-   Update whenever the user scrolls.
-*/
+/* =========================================================
+   DETECT WHEN TRAIN SECTION IS REACHED
+========================================================= */
 
-window.addEventListener(
-    "scroll",
-    moveTrain,
-    { passive: true }
+const observer =
+    new IntersectionObserver(
+
+        function(entries) {
+
+            entries.forEach(
+                function(entry) {
+
+                    if (
+                        entry.isIntersecting &&
+                        entry.intersectionRatio > .15
+                    ) {
+
+                        startTrainAnimation();
+
+                    }
+
+                }
+            );
+
+        },
+
+        {
+            threshold: .15
+        }
+
+    );
+
+
+observer.observe(
+    trainSection
 );
 
 
-/*
-   Update when the screen changes size.
-*/
+/* =========================================================
+   HANDLE RESIZE
+========================================================= */
 
 window.addEventListener(
     "resize",
-    moveTrain
+    function() {
+
+        /*
+           No scroll position controls
+           the train anymore.
+        */
+
+    }
 );
 
 
-/*
-   Initial position.
-*/
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
 
-moveTrain();
+if (
+    window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches
+) {
+
+    /*
+       For users who have reduced motion enabled,
+       put the train in a static position.
+    */
+
+    train.style.transform =
+        "translateX(0) translateY(-50%)";
+
+}
 
 </script>
 
