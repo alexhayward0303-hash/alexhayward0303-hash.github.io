@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -15,11 +14,17 @@
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background: #080808;
     color: white;
     font-family: Arial, sans-serif;
+    overflow-x: hidden;
 }
+
 
 /* =========================
    NAVBAR
@@ -28,11 +33,17 @@ body {
 .navbar {
     width: 100%;
     padding: 22px 7%;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     background: #080808;
+
     border-bottom: 1px solid #222;
+
+    position: relative;
+    z-index: 20;
 }
 
 .logo {
@@ -63,6 +74,7 @@ body {
 
 .hero {
     min-height: 650px;
+
     padding: 120px 7%;
 
     display: flex;
@@ -83,16 +95,23 @@ body {
 
 .small-title {
     color: #d6ae61;
+
     font-size: 12px;
+
     letter-spacing: 4px;
+
     text-transform: uppercase;
+
     margin-bottom: 25px;
 }
 
 .hero h1 {
     font-family: Georgia, serif;
+
     font-size: clamp(55px, 8vw, 100px);
+
     line-height: .95;
+
     font-weight: normal;
 }
 
@@ -102,194 +121,471 @@ body {
 
 .hero p {
     color: #999;
+
     font-size: 18px;
+
     line-height: 1.7;
+
     margin-top: 30px;
+
     max-width: 600px;
 }
 
 .button {
     display: inline-block;
+
     margin-top: 35px;
 
     background: #d6ae61;
+
     color: #111;
 
     padding: 16px 28px;
+
     border-radius: 50px;
 
     text-decoration: none;
+
     font-weight: bold;
 }
 
 
-/* =========================
-   TRAIN BANNER
-========================= */
+/* =========================================================
+   SCROLL TRAIN SECTION
 
-.train-banner {
-    width: 100%;
-    height: 190px;
+   The height controls how long the train stays on screen.
+========================================================= */
+
+.train-scroll-section {
 
     position: relative;
+
+    height: 2200px;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            #151515,
+            #050505 70%
+        );
+
+    border-top: 1px solid #222;
+
+    border-bottom: 1px solid #222;
+}
+
+
+/* The viewport stays pinned while scrolling */
+
+.train-sticky {
+
+    position: sticky;
+
+    top: 0;
+
+    height: 100vh;
+
+    min-height: 600px;
+
+    width: 100%;
+
     overflow: hidden;
+
+    display: flex;
+
+    align-items: center;
 
     background:
         linear-gradient(
             to bottom,
             #050505,
-            #111
+            #0b0b0b
         );
-
-    border-top: 1px solid #292929;
-    border-bottom: 1px solid #292929;
 }
 
 
-/* TRAIN */
+/* Ground */
 
-.train {
+.train-ground {
+
     position: absolute;
 
-    left: -900px;
-    top: 35px;
+    bottom: 19%;
 
-    height: 120px;
+    left: 0;
+
+    width: 100%;
+
+    height: 5px;
+
+    background: #292929;
+
+    box-shadow:
+        0 10px 0 #111,
+        0 20px 0 #222;
+}
+
+
+/* =========================================================
+   TRAIN
+========================================================= */
+
+.train {
+
+    position: absolute;
+
+    left: 0;
+
+    top: 50%;
+
+    transform: translateY(-50%);
 
     display: flex;
+
     align-items: center;
 
-    animation: trainMove 13s linear infinite;
+    gap: 0;
 
-    white-space: nowrap;
-}
+    width: max-content;
 
-@keyframes trainMove {
-
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(calc(100vw + 1800px));
-    }
-
+    will-change: transform;
 }
 
 
-/* =========================
-   ENGINE
-========================= */
+/* =========================================================
+   LOCOMOTIVE
+========================================================= */
 
-.engine {
+.locomotive {
+
     position: relative;
 
-    width: 230px;
-    height: 100px;
+    width: 280px;
+
+    height: 150px;
+
+    flex-shrink: 0;
 
     background:
         linear-gradient(
             to bottom,
-            #333,
+            #3b3b3b,
             #151515
         );
 
-    border: 2px solid #555;
+    border: 3px solid #555;
 
-    border-radius: 8px 25px 5px 5px;
+    border-radius: 12px 30px 8px 8px;
 
     box-shadow:
-        0 12px 25px rgba(0,0,0,.7);
-
-    flex-shrink: 0;
+        0 25px 50px rgba(0,0,0,.8);
 }
 
 
-/* ENGINE BODY */
+/* TRAIN text */
 
-.engine-body {
+.train-label {
+
     position: absolute;
 
-    right: 15px;
-    top: 20px;
+    left: 25px;
 
-    width: 75px;
-    height: 45px;
+    top: 25px;
 
-    background: #080808;
+    font-family: Impact, Arial Black, sans-serif;
 
-    border: 2px solid #666;
+    font-size: 30px;
+
+    letter-spacing: 3px;
+
+    color: #d6ae61;
+}
+
+
+/* locomotive cab */
+
+.cab {
+
+    position: absolute;
+
+    right: 25px;
+
+    top: 22px;
+
+    width: 95px;
+
+    height: 70px;
+
+    background: #090909;
+
+    border: 2px solid #777;
 
     border-radius: 5px;
 }
 
 
-/* WINDOW */
+/* window */
 
-.engine-window {
+.cab-window {
+
     position: absolute;
 
-    width: 25px;
-    height: 20px;
+    left: 13px;
 
-    left: 10px;
-    top: 10px;
+    top: 13px;
 
-    background: #222;
+    width: 32px;
+
+    height: 27px;
 
     border: 2px solid #d6ae61;
+
+    background: #222;
 }
 
 
-/* HEADLIGHT */
+/* headlight */
 
-.engine-light {
+.headlight {
+
     position: absolute;
 
-    right: -15px;
-    top: 12px;
+    right: -18px;
 
-    width: 12px;
-    height: 12px;
+    top: 38px;
+
+    width: 20px;
+
+    height: 20px;
 
     border-radius: 50%;
 
     background: #d6ae61;
 
     box-shadow:
-        0 0 15px #d6ae61;
+        0 0 25px #d6ae61;
 }
 
 
-/* CHIMNEY */
+/* chimney */
 
 .chimney {
+
     position: absolute;
 
-    left: 45px;
-    top: -35px;
+    left: 55px;
 
-    width: 32px;
-    height: 38px;
+    top: -65px;
 
-    background: #202020;
+    width: 40px;
 
-    border: 2px solid #555;
+    height: 65px;
+
+    background:
+        linear-gradient(
+            to right,
+            #111,
+            #444,
+            #111
+        );
+
+    border: 3px solid #555;
 
     border-radius: 8px 8px 2px 2px;
 }
 
 
-/* =========================
-   WHEELS
-========================= */
+/* chimney top */
 
-.wheel {
+.chimney::before {
+
+    content: "";
+
     position: absolute;
 
-    bottom: -25px;
+    top: -12px;
+
+    left: -10px;
+
+    width: 54px;
+
+    height: 15px;
+
+    background: #292929;
+
+    border: 2px solid #555;
+
+    border-radius: 50%;
+}
+
+
+/* =========================================================
+   WHEELS
+========================================================= */
+
+.train-wheel {
+
+    position: absolute;
+
+    bottom: -34px;
+
+    width: 62px;
+
+    height: 62px;
+
+    border-radius: 50%;
+
+    background: #090909;
+
+    border: 8px solid #555;
+
+    box-shadow:
+        inset 0 0 0 7px #151515;
+}
+
+.train-wheel::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    width: 13px;
+
+    height: 13px;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background: #777;
+}
+
+.loco-wheel1 {
+    left: 35px;
+}
+
+.loco-wheel2 {
+    left: 115px;
+}
+
+.loco-wheel3 {
+    left: 195px;
+}
+
+
+/* =========================================================
+   COUPLER
+========================================================= */
+
+.coupler {
+
+    width: 35px;
+
+    height: 12px;
+
+    background: #555;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   CARRIAGES
+========================================================= */
+
+.carriage {
+
+    position: relative;
+
+    width: 190px;
+
+    height: 125px;
+
+    flex-shrink: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #252525,
+            #111
+        );
+
+    border: 3px solid #555;
+
+    border-radius: 7px;
+
+    box-shadow:
+        0 25px 45px rgba(0,0,0,.7);
+}
+
+
+/* carriage roof */
+
+.carriage::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: -8px;
+
+    top: -14px;
+
+    width: calc(100% + 16px);
+
+    height: 15px;
+
+    background: #3a3a3a;
+
+    border-radius: 8px 8px 2px 2px;
+
+    border: 2px solid #555;
+}
+
+
+/* letter */
+
+.carriage-letter {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-family:
+        Impact,
+        Arial Black,
+        sans-serif;
+
+    font-size: 72px;
+
+    color: #d6ae61;
+
+    text-shadow:
+        3px 3px 0 #111,
+        0 0 20px rgba(214,174,97,.2);
+}
+
+
+/* carriage wheels */
+
+.carriage-wheel {
+
+    position: absolute;
+
+    bottom: -27px;
 
     width: 48px;
+
     height: 48px;
 
     border-radius: 50%;
@@ -299,90 +595,24 @@ body {
     border: 6px solid #555;
 
     box-shadow:
-        inset 0 0 0 5px #111;
-
-    animation: wheelSpin .7s linear infinite;
+        inset 0 0 0 5px #151515;
 }
 
-.wheel1 {
+.carriage-wheel.left {
     left: 25px;
 }
 
-.wheel2 {
-    left: 90px;
-}
-
-.wheel3 {
-    left: 155px;
-}
-
-@keyframes wheelSpin {
-
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-
+.carriage-wheel.right {
+    right: 25px;
 }
 
 
-/* =========================
-   BANNER
-========================= */
-
-.banner {
-    position: relative;
-
-    margin-left: 20px;
-
-    width: 650px;
-    height: 80px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background:
-        linear-gradient(
-            to bottom,
-            #d6ae61,
-            #a77f35
-        );
-
-    border: 4px solid #211b10;
-
-    box-shadow:
-        0 10px 20px rgba(0,0,0,.6);
-
-    transform: skewX(-3deg);
-}
-
-.banner span {
-
-    font-family:
-        Impact,
-        Arial Black,
-        sans-serif;
-
-    font-size: 46px;
-
-    letter-spacing: 4px;
-
-    color: #111;
-
-    text-shadow:
-        2px 2px 0 rgba(255,255,255,.25);
-}
-
-
-/* =========================
+/* =========================================================
    SMOKE
-========================= */
+========================================================= */
 
 .smoke {
+
     position: absolute;
 
     border-radius: 50%;
@@ -390,91 +620,83 @@ body {
     background:
         radial-gradient(
             circle,
-            rgba(210,210,210,.55),
-            rgba(100,100,100,.2),
+            rgba(220,220,220,.55),
+            rgba(130,130,130,.25),
             transparent 70%
         );
 
-    filter: blur(3px);
+    filter: blur(5px);
 
     opacity: 0;
 
-    animation:
-        smokeRise 3s ease-out infinite;
+    pointer-events: none;
 }
 
 .smoke1 {
-    left: 38px;
-    top: -65px;
-
-    width: 45px;
-    height: 45px;
-
-    animation-delay: 0s;
+    left: 30px;
+    top: -105px;
+    width: 65px;
+    height: 65px;
 }
 
 .smoke2 {
-    left: 15px;
-    top: -75px;
-
-    width: 65px;
-    height: 65px;
-
-    animation-delay: .7s;
+    left: 70px;
+    top: -160px;
+    width: 85px;
+    height: 85px;
 }
 
 .smoke3 {
-    left: 65px;
-    top: -100px;
-
-    width: 55px;
-    height: 55px;
-
-    animation-delay: 1.4s;
-}
-
-.smoke4 {
     left: 5px;
-    top: -115px;
-
-    width: 75px;
-    height: 75px;
-
-    animation-delay: 2s;
-}
-
-@keyframes smokeRise {
-
-    0% {
-        opacity: 0;
-        transform:
-            translate(0, 20px)
-            scale(.5);
-    }
-
-    20% {
-        opacity: .7;
-    }
-
-    60% {
-        opacity: .45;
-    }
-
-    100% {
-        opacity: 0;
-        transform:
-            translate(-35px, -90px)
-            scale(1.7);
-    }
-
+    top: -210px;
+    width: 110px;
+    height: 110px;
 }
 
 
-/* =========================
+/* =========================================================
+   TRAIN MESSAGE
+========================================================= */
+
+.train-message {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 8%;
+
+    transform: translateX(-50%);
+
+    text-align: center;
+
+    width: 90%;
+
+    pointer-events: none;
+}
+
+.train-message .small-title {
+    margin-bottom: 10px;
+}
+
+.train-message p {
+
+    color: #666;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
    COLLECTION
-========================= */
+========================================================= */
 
 .collection {
+
     padding: 100px 7%;
 }
 
@@ -483,30 +705,40 @@ body {
 }
 
 .collection-title h2 {
+
     font-family: Georgia, serif;
+
     font-size: 55px;
+
     font-weight: normal;
 }
 
 .collection-title p {
+
     color: #888;
+
     margin-top: 10px;
 }
 
 
-/* =========================
-   PRODUCTS
-========================= */
+/* PRODUCTS */
 
 .products {
+
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
     gap: 40px;
 }
 
 .product {
+
     background: #111;
+
     border-radius: 25px;
+
     overflow: hidden;
 
     transition: .4s;
@@ -515,7 +747,9 @@ body {
 }
 
 .product:hover {
+
     transform: translateY(-8px);
+
     border-color: #806738;
 }
 
@@ -523,10 +757,13 @@ body {
 /* PRODUCT IMAGE */
 
 .product-image {
+
     height: 520px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     position: relative;
@@ -540,6 +777,7 @@ body {
 }
 
 .product-image.two {
+
     background:
         radial-gradient(
             circle,
@@ -549,10 +787,12 @@ body {
 }
 
 
-/* BUILT-IN AUTOGRAPH */
+/* FAKE PHOTO */
 
 .fake-photo {
+
     width: 70%;
+
     height: 80%;
 
     background:
@@ -571,11 +811,13 @@ body {
 }
 
 .fake-photo::before {
+
     content: "FREDDY";
 
     position: absolute;
 
     top: 45%;
+
     left: 18%;
 
     color: #333;
@@ -588,9 +830,11 @@ body {
 }
 
 .signature {
+
     position: absolute;
 
     top: 25%;
+
     left: 15%;
 
     color: #222;
@@ -607,9 +851,11 @@ body {
 }
 
 .photo-label {
+
     position: absolute;
 
     top: 20px;
+
     left: 20px;
 
     background: rgba(0,0,0,.8);
@@ -626,15 +872,14 @@ body {
 }
 
 
-/* =========================
-   PRODUCT INFO
-========================= */
+/* PRODUCT INFO */
 
 .product-info {
     padding: 25px;
 }
 
 .category {
+
     color: #d6ae61;
 
     font-size: 10px;
@@ -643,6 +888,7 @@ body {
 }
 
 .product-info h3 {
+
     font-family: Georgia, serif;
 
     font-size: 30px;
@@ -653,6 +899,7 @@ body {
 }
 
 .product-info p {
+
     color: #888;
 
     margin-top: 7px;
@@ -661,6 +908,7 @@ body {
 }
 
 .product-bottom {
+
     margin-top: 25px;
 
     display: flex;
@@ -671,11 +919,14 @@ body {
 }
 
 .price {
+
     font-size: 20px;
+
     font-weight: bold;
 }
 
 .buy {
+
     color: white;
 
     text-decoration: none;
@@ -686,17 +937,19 @@ body {
 }
 
 
-/* =========================
+/* =========================================================
    TRUST
-========================= */
+========================================================= */
 
 .trust {
+
     background: #0d0d0d;
 
     padding: 100px 7%;
 }
 
 .trust h2 {
+
     font-family: Georgia, serif;
 
     font-size: 50px;
@@ -707,6 +960,7 @@ body {
 }
 
 .trust-grid {
+
     display: grid;
 
     grid-template-columns:
@@ -716,12 +970,14 @@ body {
 }
 
 .trust-box {
+
     border-left: 2px solid #d6ae61;
 
     padding-left: 20px;
 }
 
 .trust-box h3 {
+
     font-family: Georgia, serif;
 
     font-size: 25px;
@@ -730,17 +986,19 @@ body {
 }
 
 .trust-box p {
+
     color: #888;
 
     line-height: 1.7;
 }
 
 
-/* =========================
+/* =========================================================
    GUARANTEE
-========================= */
+========================================================= */
 
 .guarantee {
+
     padding: 120px 7%;
 
     text-align: center;
@@ -754,9 +1012,11 @@ body {
 }
 
 .guarantee h2 {
+
     font-family: Georgia, serif;
 
-    font-size: clamp(40px,6vw,70px);
+    font-size:
+        clamp(40px,6vw,70px);
 
     font-weight: normal;
 
@@ -766,6 +1026,7 @@ body {
 }
 
 .guarantee p {
+
     color: #888;
 
     max-width: 650px;
@@ -776,11 +1037,12 @@ body {
 }
 
 
-/* =========================
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 footer {
+
     padding: 40px 7%;
 
     border-top: 1px solid #222;
@@ -795,9 +1057,9 @@ footer {
 }
 
 
-/* =========================
+/* =========================================================
    MOBILE
-========================= */
+========================================================= */
 
 @media(max-width:700px) {
 
@@ -829,382 +1091,943 @@ footer {
         margin-top: 10px;
     }
 
-    .train-banner {
-        height: 160px;
+
+    /* MOBILE TRAIN */
+
+    .train-scroll-section {
+        height: 1900px;
     }
 
-    .train {
-        top: 35px;
+    .train-sticky {
+        min-height: 500px;
     }
 
-    .banner {
-        width: 500px;
-        height: 65px;
+    .locomotive {
+        width: 230px;
+        height: 125px;
     }
 
-    .banner span {
-        font-size: 32px;
-        letter-spacing: 2px;
+    .train-label {
+        font-size: 25px;
+    }
+
+    .carriage {
+        width: 145px;
+        height: 105px;
+    }
+
+    .carriage-letter {
+        font-size: 58px;
+    }
+
+    .train-wheel {
+        width: 50px;
+        height: 50px;
+    }
+
+    .locomotive .train-wheel {
+        bottom: -27px;
+    }
+
+}
+
+
+/* ACCESSIBILITY */
+
+@media(prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
     }
 
 }
 
 </style>
-
 </head>
+
 
 <body>
 
-<!-- =========================
+
+<!-- =====================================================
      NAVIGATION
-========================= -->
+===================================================== -->
 
 <div class="navbar">
 
-```
-<div class="logo">
-    JET STREAM <span>AUTOGRAPHS</span>
+    <div class="logo">
+        JET STREAM <span>AUTOGRAPHS</span>
+    </div>
+
+    <div>
+
+        <a href="#collection">
+            Collection
+        </a>
+
+        <a href="#authenticity">
+            Authenticity
+        </a>
+
+        <a href="#guarantee">
+            Guarantee
+        </a>
+
+    </div>
+
 </div>
 
-<div>
-    <a href="#collection">Collection</a>
-    <a href="#authenticity">Authenticity</a>
-    <a href="#guarantee">Guarantee</a>
-</div>
-```
 
-</div>
-
-<!-- =========================
+<!-- =====================================================
      HERO
-========================= -->
+===================================================== -->
 
 <section class="hero">
 
-```
-<div class="hero-text">
+    <div class="hero-text">
 
-    <div class="small-title">
-        Authentic Memorabilia
+        <div class="small-title">
+            Authentic Memorabilia
+        </div>
+
+        <h1>
+            Own a piece of
+            <span>history.</span>
+        </h1>
+
+        <p>
+            Discover authentic autographs and rare memorabilia
+            from legendary athletes, entertainers and icons.
+        </p>
+
+        <a
+            href="#collection"
+            class="button"
+        >
+            Shop the Collection
+        </a>
+
     </div>
-
-    <h1>
-        Own a piece of
-        <span>history.</span>
-    </h1>
-
-    <p>
-        Discover authentic autographs and rare memorabilia
-        from legendary athletes, entertainers and icons.
-    </p>
-
-    <a href="#collection" class="button">
-        Shop the Collection
-    </a>
-
-</div>
-```
 
 </section>
 
-<!-- =========================
-     TRAIN BANNER
-========================= -->
 
-<div class="train-banner">
+<!-- =====================================================
+     SCROLL TRAIN
+===================================================== -->
 
-```
-<div class="train">
+<section
+    class="train-scroll-section"
+    id="trainSection"
+>
 
-    <!-- SMOKE -->
-
-    <div class="smoke smoke1"></div>
-    <div class="smoke smoke2"></div>
-    <div class="smoke smoke3"></div>
-    <div class="smoke smoke4"></div>
+    <div class="train-sticky">
 
 
-    <!-- ENGINE -->
+        <!-- GROUND -->
 
-    <div class="engine">
+        <div class="train-ground"></div>
 
-        <div class="chimney"></div>
 
-        <div class="engine-body">
+        <!-- TRAIN -->
 
-            <div class="engine-window"></div>
+        <div
+            class="train"
+            id="train"
+        >
 
-            <div class="engine-light"></div>
+
+            <!-- =========================
+                 LOCOMOTIVE
+            ========================= -->
+
+            <div class="locomotive">
+
+
+                <!-- SMOKE -->
+
+                <div
+                    class="smoke smoke1"
+                    id="smoke1"
+                ></div>
+
+                <div
+                    class="smoke smoke2"
+                    id="smoke2"
+                ></div>
+
+                <div
+                    class="smoke smoke3"
+                    id="smoke3"
+                ></div>
+
+
+                <!-- LABEL -->
+
+                <div class="train-label">
+                    TRAIN
+                </div>
+
+
+                <!-- CAB -->
+
+                <div class="cab">
+
+                    <div class="cab-window"></div>
+
+                </div>
+
+
+                <!-- HEADLIGHT -->
+
+                <div class="headlight"></div>
+
+
+                <!-- CHIMNEY -->
+
+                <div class="chimney"></div>
+
+
+                <!-- WHEELS -->
+
+                <div
+                    class="train-wheel loco-wheel1"
+                ></div>
+
+                <div
+                    class="train-wheel loco-wheel2"
+                ></div>
+
+                <div
+                    class="train-wheel loco-wheel3"
+                ></div>
+
+
+            </div>
+
+
+            <!-- COUPLER -->
+
+            <div class="coupler"></div>
+
+
+            <!-- =================================================
+                 CARRIAGES
+            ================================================= -->
+
+
+            <!-- V -->
+
+            <div class="carriage">
+
+                <div class="carriage-letter">
+                    V
+                </div>
+
+                <div class="carriage-wheel left"></div>
+                <div class="carriage-wheel right"></div>
+
+            </div>
+
+
+            <div class="coupler"></div>
+
+
+            <!-- A -->
+
+            <div class="carriage">
+
+                <div class="carriage-letter">
+                    A
+                </div>
+
+                <div class="carriage-wheel left"></div>
+                <div class="carriage-wheel right"></div>
+
+            </div>
+
+
+            <div class="coupler"></div>
+
+
+            <!-- L -->
+
+            <div class="carriage">
+
+                <div class="carriage-letter">
+                    L
+                </div>
+
+                <div class="carriage-wheel left"></div>
+                <div class="carriage-wheel right"></div>
+
+            </div>
+
+
+            <div class="coupler"></div>
+
+
+            <!-- V -->
+
+            <div class="carriage">
+
+                <div class="carriage-letter">
+                    V
+                </div>
+
+                <div class="carriage-wheel left"></div>
+                <div class="carriage-wheel right"></div>
+
+            </div>
+
+
+            <div class="coupler"></div>
+
+
+            <!-- O -->
+
+            <div class="carriage">
+
+                <div class="carriage-letter">
+                    O
+                </div>
+
+                <div class="carriage-wheel left"></div>
+                <div class="carriage-wheel right"></div>
+
+            </div>
+
+
+            <div class="coupler"></div>
+
+
+            <!-- L -->
+
+            <div class="carriage">
+
+                <div class="carriage-letter">
+                    L
+                </div>
+
+                <div class="carriage-wheel left"></div>
+                <div class="carriage-wheel right"></div>
+
+            </div>
+
+
+            <div class="coupler"></div>
+
+
+            <!-- I -->
+
+            <div class="carriage">
+
+                <div class="carriage-letter">
+                    I
+                </div>
+
+                <div class="carriage-wheel left"></div>
+                <div class="carriage-wheel right"></div>
+
+            </div>
+
+
+            <div class="coupler"></div>
+
+
+            <!-- N -->
+
+            <div class="carriage">
+
+                <div class="carriage-letter">
+                    N
+                </div>
+
+                <div class="carriage-wheel left"></div>
+                <div class="carriage-wheel right"></div>
+
+            </div>
+
+
+            <div class="coupler"></div>
+
+
+            <!-- E -->
+
+            <div class="carriage">
+
+                <div class="carriage-letter">
+                    E
+                </div>
+
+                <div class="carriage-wheel left"></div>
+                <div class="carriage-wheel right"></div>
+
+            </div>
+
+
+            <div class="coupler"></div>
+
+
+            <!-- S -->
+
+            <div class="carriage">
+
+                <div class="carriage-letter">
+                    S
+                </div>
+
+                <div class="carriage-wheel left"></div>
+                <div class="carriage-wheel right"></div>
+
+            </div>
+
+
+            <div class="coupler"></div>
+
+
+            <!-- C -->
+
+            <div class="carriage">
+
+                <div class="carriage-letter">
+                    C
+                </div>
+
+                <div class="carriage-wheel left"></div>
+                <div class="carriage-wheel right"></div>
+
+            </div>
+
+
+            <div class="coupler"></div>
+
+
+            <!-- A -->
+
+            <div class="carriage">
+
+                <div class="carriage-letter">
+                    A
+                </div>
+
+                <div class="carriage-wheel left"></div>
+                <div class="carriage-wheel right"></div>
+
+            </div>
+
+
+            <div class="coupler"></div>
+
+
+            <!-- M -->
+
+            <div class="carriage">
+
+                <div class="carriage-letter">
+                    M
+                </div>
+
+                <div class="carriage-wheel left"></div>
+                <div class="carriage-wheel right"></div>
+
+            </div>
+
+
+            <div class="coupler"></div>
+
+
+            <!-- S -->
+
+            <div class="carriage">
+
+                <div class="carriage-letter">
+                    S
+                </div>
+
+                <div class="carriage-wheel left"></div>
+                <div class="carriage-wheel right"></div>
+
+            </div>
+
+
+            <div class="coupler"></div>
+
+
+            <!-- ! -->
+
+            <div class="carriage">
+
+                <div class="carriage-letter">
+                    !
+                </div>
+
+                <div class="carriage-wheel left"></div>
+                <div class="carriage-wheel right"></div>
+
+            </div>
+
 
         </div>
 
 
-        <div class="wheel wheel1"></div>
-        <div class="wheel wheel2"></div>
-        <div class="wheel wheel3"></div>
+        <!-- TRAIN MESSAGE -->
+
+        <div class="train-message">
+
+            <div class="small-title">
+                Keep scrolling
+            </div>
+
+            <p>
+                The train is still coming...
+            </p>
+
+        </div>
+
 
     </div>
 
+</section>
 
-    <!-- BANNER -->
 
-    <div class="banner">
-
-        <span>
-            VALVOLINE SCAMS!
-        </span>
-
-    </div>
-
-</div>
-```
-
-</div>
-
-<!-- =========================
+<!-- =====================================================
      COLLECTION
-========================= -->
+===================================================== -->
 
-<section class="collection" id="collection">
+<section
+    class="collection"
+    id="collection"
+>
 
-```
-<div class="collection-title">
+    <div class="collection-title">
+
+        <div class="small-title">
+            Featured Collection
+        </div>
+
+        <h2>
+            Recently signed
+        </h2>
+
+        <p>
+            Rare signatures. Real stories.
+        </p>
+
+    </div>
+
+
+    <div class="products">
+
+
+        <!-- PRODUCT 1 -->
+
+        <div class="product">
+
+            <div class="product-image">
+
+                <div class="fake-photo">
+
+                    <div class="signature">
+                        Robert Englund
+                    </div>
+
+                </div>
+
+                <div class="photo-label">
+                    AUTHENTICATED
+                </div>
+
+            </div>
+
+
+            <div class="product-info">
+
+                <div class="category">
+                    HORROR • SIGNED PHOTO
+                </div>
+
+                <h3>
+                    Robert Englund
+                </h3>
+
+                <p>
+                    Signed Freddy Krueger photograph
+                    with Certificate of Authenticity.
+                </p>
+
+
+                <div class="product-bottom">
+
+                    <div class="price">
+                        $129.99
+                    </div>
+
+                    <a
+                        href="#"
+                        class="buy"
+                    >
+                        View item →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 2 -->
+
+        <div class="product">
+
+            <div class="product-image two">
+
+                <div class="fake-photo">
+
+                    <div class="signature red-signature">
+                        Robert Englund
+                    </div>
+
+                </div>
+
+                <div class="photo-label">
+                    AUTHENTICATED
+                </div>
+
+            </div>
+
+
+            <div class="product-info">
+
+                <div class="category">
+                    HORROR • SIGNED PHOTO
+                </div>
+
+                <h3>
+                    Robert Englund
+                </h3>
+
+                <p>
+                    Signed Freddy Krueger photograph
+                    with Certificate of Authenticity.
+                </p>
+
+
+                <div class="product-bottom">
+
+                    <div class="price">
+                        $129.99
+                    </div>
+
+                    <a
+                        href="#"
+                        class="buy"
+                    >
+                        View item →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     AUTHENTICITY
+===================================================== -->
+
+<section
+    class="trust"
+    id="authenticity"
+>
+
+    <h2>
+        Buy with confidence.
+    </h2>
+
+
+    <div class="trust-grid">
+
+
+        <div class="trust-box">
+
+            <h3>
+                Authenticity
+            </h3>
+
+            <p>
+                Every autograph is carefully sourced
+                and accompanied by documentation
+                identifying the item and signing method.
+            </p>
+
+        </div>
+
+
+        <div class="trust-box">
+
+            <h3>
+                Certificate of Authenticity
+            </h3>
+
+            <p>
+                Collectibles come with professional
+                documentation for your records and
+                collection.
+            </p>
+
+        </div>
+
+
+        <div class="trust-box">
+
+            <h3>
+                Collector First
+            </h3>
+
+            <p>
+                We are dedicated to providing collectors
+                with memorable pieces and a professional
+                buying experience.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     GUARANTEE
+===================================================== -->
+
+<section
+    class="guarantee"
+    id="guarantee"
+>
 
     <div class="small-title">
-        Featured Collection
+        Jet Stream Promise
     </div>
 
     <h2>
-        Recently signed
+        A one-year authenticity guarantee.
     </h2>
 
     <p>
-        Rare signatures. Real stories.
+        If an autograph purchased from Jet Stream Autographs
+        is proven to be fake within one year, we stand behind
+        our guarantee.
     </p>
 
-</div>
-
-
-<div class="products">
-
-
-    <!-- PRODUCT 1 -->
-
-    <div class="product">
-
-        <div class="product-image">
-
-            <div class="fake-photo">
-
-                <div class="signature">
-                    Robert Englund
-                </div>
-
-            </div>
-
-            <div class="photo-label">
-                AUTHENTICATED
-            </div>
-
-        </div>
-
-
-        <div class="product-info">
-
-            <div class="category">
-                HORROR • SIGNED PHOTO
-            </div>
-
-            <h3>
-                Robert Englund
-            </h3>
-
-            <p>
-                Signed Freddy Krueger photograph
-                with Certificate of Authenticity.
-            </p>
-
-
-            <div class="product-bottom">
-
-                <div class="price">
-                    $129.99
-                </div>
-
-                <a href="#" class="buy">
-                    View item →
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- PRODUCT 2 -->
-
-    <div class="product">
-
-        <div class="product-image two">
-
-            <div class="fake-photo">
-
-                <div class="signature red-signature">
-                    Robert Englund
-                </div>
-
-            </div>
-
-            <div class="photo-label">
-                AUTHENTICATED
-            </div>
-
-        </div>
-
-
-        <div class="product-info">
-
-            <div class="category">
-                HORROR • SIGNED PHOTO
-            </div>
-
-            <h3>
-                Robert Englund
-            </h3>
-
-            <p>
-                Signed Freddy Krueger photograph
-                with Certificate of Authenticity.
-            </p>
-
-
-            <div class="product-bottom">
-
-                <div class="price">
-                    $129.99
-                </div>
-
-                <a href="#" class="buy">
-                    View item →
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-</div>
-```
-
 </section>
 
-<!-- =========================
-     AUTHENTICITY
-========================= -->
 
-<section class="trust" id="authenticity">
-
-```
-<h2>
-    Buy with confidence.
-</h2>
-
-
-<div class="trust-grid">
-
-    <div class="trust-box">
-
-        <h3>
-            Authenticity
-        </h3>
-
-        <p>
-            Every autograph is carefully sourced
-            and accompanied by documentation
-            identifying the item and signing method.
-        </p>
-
-    </div>
-
-
-    <div class="trust-box">
-
-        <h3>
-            Certificate of Authenticity
-        </h3>
-
-        <p>
-            Collectibles come with professional
-            documentation for your records and
-            collection.
-        </p>
-
-    </div>
-
-
-    <div class="trust-box">
-
-        <h3>
-            Collector First
-        </h3>
-
-        <p>
-            We are dedicated to providing collectors
-            with memorable pieces and a professional
-            buying experience.
-        </p>
-
-    </div>
-
-</div>
-```
-
-</section>
-
-<!-- =========================
-     GUARANTEE
-========================= -->
-
-<section class="guarantee" id="guarantee">
-
-```
-<div class="small-title">
-    Jet Stream Promise
-</div>
-
-<h2>
-    A one-year authenticity guarantee.
-</h2>
-
-<p>
-    If an autograph purchased from Jet Stream Autographs
-    is proven to be fake within one year, we stand behind
-    our guarantee.
-</p>
-```
-
-</section>
-
-<!-- =========================
+<!-- =====================================================
      FOOTER
-========================= -->
+===================================================== -->
 
 <footer>
 
-```
-<div>
-    © 2026 Jet Stream Autographs
-</div>
+    <div>
+        © 2026 Jet Stream Autographs
+    </div>
 
-<div>
-    Authenticity • Collectibles • Memorabilia
-</div>
-```
+    <div>
+        Authenticity • Collectibles • Memorabilia
+    </div>
 
 </footer>
+
+
+<!-- =====================================================
+     SCROLL TRAIN JAVASCRIPT
+===================================================== -->
+
+<script>
+
+const trainSection =
+    document.getElementById("trainSection");
+
+const train =
+    document.getElementById("train");
+
+const smoke1 =
+    document.getElementById("smoke1");
+
+const smoke2 =
+    document.getElementById("smoke2");
+
+const smoke3 =
+    document.getElementById("smoke3");
+
+
+function moveTrain() {
+
+    const rect =
+        trainSection.getBoundingClientRect();
+
+    const sectionHeight =
+        trainSection.offsetHeight;
+
+    const viewportHeight =
+        window.innerHeight;
+
+
+    /*
+       How far the user has travelled
+       through the train section.
+    */
+
+    let progress =
+        -rect.top /
+        (sectionHeight - viewportHeight);
+
+
+    /*
+       Keep progress between 0 and 1.
+    */
+
+    progress =
+        Math.max(
+            0,
+            Math.min(
+                1,
+                progress
+            )
+        );
+
+
+    /*
+       Calculate the total width
+       of the train.
+    */
+
+    const trainWidth =
+        train.offsetWidth;
+
+
+    /*
+       Start completely off the
+       right/left depending on scroll.
+    */
+
+    const startPosition =
+        window.innerWidth + 100;
+
+
+    const endPosition =
+        -trainWidth - 100;
+
+
+    /*
+       Move the train from
+       right -> left.
+    */
+
+    const position =
+        startPosition +
+        (endPosition - startPosition) *
+        progress;
+
+
+    train.style.transform =
+        "translateX(" +
+        position +
+        "px) translateY(-50%)";
+
+
+    /*
+       Smoke gets stronger while
+       the train is moving.
+    */
+
+    const smokeOpacity =
+        Math.sin(progress * Math.PI) * .75;
+
+
+    smoke1.style.opacity =
+        smokeOpacity;
+
+    smoke2.style.opacity =
+        smokeOpacity * .8;
+
+    smoke3.style.opacity =
+        smokeOpacity * .65;
+
+
+    /*
+       Make the smoke drift.
+    */
+
+    smoke1.style.transform =
+        "translate(" +
+        (-progress * 30) +
+        "px," +
+        (-progress * 20) +
+        "px) scale(" +
+        (1 + progress * .4) +
+        ")";
+
+    smoke2.style.transform =
+        "translate(" +
+        (-progress * 60) +
+        "px," +
+        (-progress * 40) +
+        "px) scale(" +
+        (1 + progress * .5) +
+        ")";
+
+    smoke3.style.transform =
+        "translate(" +
+        (-progress * 90) +
+        "px," +
+        (-progress * 60) +
+        "px) scale(" +
+        (1 + progress * .6) +
+        ")";
+
+}
+
+
+/*
+   Update whenever the user scrolls.
+*/
+
+window.addEventListener(
+    "scroll",
+    moveTrain,
+    { passive: true }
+);
+
+
+/*
+   Update when the screen changes size.
+*/
+
+window.addEventListener(
+    "resize",
+    moveTrain
+);
+
+
+/*
+   Initial position.
+*/
+
+moveTrain();
+
+</script>
+
 
 </body>
 </html>
